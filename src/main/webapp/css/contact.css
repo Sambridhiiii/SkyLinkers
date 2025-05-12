@@ -1,0 +1,165 @@
+@charset "UTF-8";
+
+/* Base Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    overflow: auto;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Main Layout */
+main {
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Top Headings */
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: #1e3c72;
+    
+}
+
+.intro-text {
+    text-align: center;
+    font-size: 1rem;
+    color: #1e3c72;
+    margin-bottom: 1rem;
+}
+
+/* Contact Area */
+.contact-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-start;
+    padding: 1rem;
+    
+}
+
+/* Contact Info and Form */
+.contact-info, .contact-form {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    flex: 1 1 300px;
+    font-family: 'Open Sans', sans-serif;
+    
+    
+/* Section Titles */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #FF8C42;
+    padding-bottom: 0.3rem;
+    color: #1e3c72;
+    
+}
+
+/* Contact Method */
+.contact-method {
+    margin-bottom: 1.8rem;
+    
+}
+
+.contact-method h3 {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #1e3c72;
+}
+
+.contact-method p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.contact-icon, .social-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+}
+
+.social-links p {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #003b6f;
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: 'Open Sans', sans-serif;
+    transition: 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #0077cc;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.1);
+}
+
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+/* Submit Button */
+.submit-btn {
+    background-color: #FF8C42;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.submit-btn:hover {
+    background-color: #e67329;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+    }
+}
+}
