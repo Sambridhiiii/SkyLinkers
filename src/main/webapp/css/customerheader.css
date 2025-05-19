@@ -137,6 +137,18 @@ body {
     flex-shrink: 0;
 }
 
+/* Profile link styling */
+.profile-link {
+    margin-left: 15px;
+    color: #333;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
+
+.profile-link:hover {
+    color: #0066cc;
+}
+
 /* Responsive Adjustments */
 @media (max-width: 992px) {
     .header-container {

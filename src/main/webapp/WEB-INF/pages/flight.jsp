@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <title>Flight Management</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flight.css">
-    <jsp:include page = "header.jsp"/>
 </head>
 <body>
+<jsp:include page="${headerToInclude}" />
 <div class="container">
     <div class="flight-form">
         <h2>Add Flight</h2>
@@ -16,29 +16,29 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="flightNumber">Flight Number</label>
-                    <input type="text" id="flightNumber" >
+                    <input type="text" id="flightNumber">
                 </div>
                 <div class="form-group">
                     <label for="airline">Airline</label>
-                    <input type="text" id="airline" >
+                    <input type="text" id="airline">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label for="From">From</label>
-                    <input type="text" id="from" >
+                    <input type="text" id="from">
                 </div>
                 <div class="form-group">
                     <label for="To">To</label>
-                    <input type="text" id="to" >
+                    <input type="text" id="to">
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
                     <label for="departureDate">Departure Date</label>
-                    <input type="date" id="departureDate" >
+                    <input type="date" id="departureDate">
                 </div>
                 <div class="form-group">
                     <label for="departureTime">Departure Time</label>
@@ -49,7 +49,7 @@
             <div class="form-row">
                 <div class="form-group">
                     <label for="arrivalDate">Arrival Date</label>
-                    <input type="date" id="arrivalDate" >
+                    <input type="date" id="arrivalDate">
                 </div>
                 <div class="form-group">
                     <label for="arrivalTime">Arrival Time</label>
@@ -68,21 +68,20 @@
                 </div>
                 <div class="form-group">
                     <label for="aircraft">Aircraft Type</label>
-                    <input type="text" id="aircraft" >
+                    <input type="text" id="aircraft">
                 </div>
             </div>
 
             <div class="form-row action-button-row">
                 <button type="submit" id="submitBtn">Create Flight</button>
-                <button type="button" id="updateBtn" style="background-color: #FFA500;">Update Flight</button>
-                <button type="button" id="deleteBtn" style="background-color: #F44336;">Delete Flight</button>
-                <button type="button" id="resetBtn" style="background-color: #666;">Reset Form</button>
+                <button type="button" id="updateBtn">Update Flight</button>
+                
            </div>
         </form>
     </div>
 
     <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search flights by number,destination.......">
+        <input type="text" id="searchInput" placeholder="Search flights by number, destination...">
     </div>
 
     <h2>Flight Schedule</h2>
@@ -102,31 +101,36 @@
         </thead>
         <tbody id="flightTableBody">
             <tr>
-                        <td>SL 098</td>
-                        <td>Yeti Airines</td>
-                        <td>Birjung</td>
-                        <td>Kathmandu</td>
-                        <td>11:00AM</td>
-                        <td>1:00PM</td>
-                        <td>Delayed</td>
-                        <td>Boeing-08</td>
-                        <td><div class="status">Active</div></td>
-                        
-                    </tr>
-                    <tr>
-                        <td>SL 018</td>
-                        <td>Buddha Air</td>
-                        <td>Kathmandu</td>
-                        <td>Dang</td>
-                        <td>1:00PM</td>
-                        <td>2:00PM</td>
-                        <td>On time</td>
-                        <td>AirBus-77</td>
-                        <td><div class="status">Active</div></td>
-                    </tr>
+                <td>SL 098</td>
+                <td>Yeti Airlines</td>
+                <td>Birjung</td>
+                <td>Kathmandu</td>
+                <td>11:00 AM</td>
+                <td>1:00 PM</td>
+                <td>Boeing-08</td>
+                <td><div class="status status-ontime">On Time</div></td>
+                <td class="action-buttons">
+                    <button class="action-btn edit-btn">Edit</button>
+                    <button class="action-btn delete-btn">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>SL 018</td>
+                <td>Buddha Air</td>
+                <td>Kathmandu</td>
+                <td>Dang</td>
+                <td>1:00 PM</td>
+                <td>2:00 PM</td>
+                <td>AirBus-77</td>
+                <td><div class="status status-delayed">Delayed</div></td>
+                <td class="action-buttons">
+                    <button class="action-btn edit-btn">Edit</button>
+                    <button class="action-btn delete-btn">Delete</button>
+                </td>
+            </tr>
         </tbody>
     </table>
 </div>
+<jsp:include page="footer.jsp"/>
 </body>
-<jsp:include page = "footer.jsp"/>
 </html>

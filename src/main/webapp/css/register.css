@@ -5,11 +5,16 @@ body {
     padding: 0;
     font-family: 'Montserrat', 'Segoe UI', sans-serif;
     background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+    min-height: 100vh;
+    color: #2d3748;
+}
+
+/* New wrapper to center the register container */
+.page-center-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    color: #2d3748;
 }
 
 .register-container {
@@ -161,4 +166,53 @@ body {
 .login-prompt a:hover {
     text-decoration: underline;
     color: #FF8C42;
+}
+
+/* error-popup.css - Absolute fixed positioning */
+.error-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.error-popup-container {
+    width: 400px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: popIn 0.3s ease-out;
+}
+
+.error-popup-header {
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #1A73E8, #FF8C42);
+    color: white;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.error-popup-body {
+    padding: 20px;
+    color: #333;
+    max-height: 300px;
+    overflow-y: auto;
+    white-space: pre-line;
+}
+
+.error-popup-footer {
+    padding: 15px 20px;
+    text-align: right;
+    border-top: 1px solid #eee;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
 }

@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/admindashboard.css">
-    <jsp:include page="header.jsp"/>
+    
 </head>
 <body>
-   
+   <jsp:include page="${headerToInclude}" />
     <div class="dashboard-container">
     <h1>Admin Dashboard</h1>
         <section class="stats-section">
@@ -171,6 +171,7 @@
             </table>
         </section>
     </div>
+    <jsp:include page = "footer.jsp"/>
+    
 </body>
-<jsp:include page = "footer.jsp"/>
 </html>

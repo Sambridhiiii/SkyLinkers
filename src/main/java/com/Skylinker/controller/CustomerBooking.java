@@ -8,42 +8,42 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * AdminDashboard servlet handles requests to the admin dashboard page.
- * It forwards GET requests to the admindashboard.jsp page.
+ * CustomerBooking servlet handles requests related to customer flight bookings.
+ * It forwards GET requests to the customerbooking.jsp page.
  * 
  * LMU ID: 23048681  
  * NAME: Sambridhi Shrestha
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/AdminDashboard" })
-public class AdminDashboard extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/CustomerBooking" })
+public class CustomerBooking extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor.
      */
-    public AdminDashboard() {
+    public CustomerBooking() {
         super();
     }
 
     /**
      * Handles HTTP GET requests.
-     * Forwards the request to the admin dashboard JSP page.
+     * Forwards the request to the customer booking JSP page.
      *
-     * @param request  HttpServletRequest containing the client request
-     * @param response HttpServletResponse to send the response
+     * @param request  the HttpServletRequest containing client request
+     * @param response the HttpServletResponse to send response to client
      * @throws ServletException if servlet-specific error occurs
      * @throws IOException      if an I/O error occurs during processing
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/pages/admindashboard.jsp").forward(request, response);
+        request.getRequestDispatcher("WEB-INF/pages/customerbooking.jsp").forward(request, response);
     }
 
     /**
      * Handles HTTP POST requests by delegating to doGet.
      *
-     * @param request  HttpServletRequest containing the client request
-     * @param response HttpServletResponse to send the response
+     * @param request  the HttpServletRequest containing client request
+     * @param response the HttpServletResponse to send response to client
      * @throws ServletException if servlet-specific error occurs
      * @throws IOException      if an I/O error occurs during processing
      */

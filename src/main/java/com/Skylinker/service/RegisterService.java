@@ -6,56 +6,57 @@ import java.sql.SQLException;
 
 import com.Skylinker.config.DbConfig;
 import com.Skylinker.model.CustomerModel;
+import com.Skylinker.util.PasswordUtil;
 
+/**
+ * RegisterService manages customer registration,
+ * including database insertion with password encryption.
+ */
 public class RegisterService {
-
     private Connection connection;
 
-    public RegisterService() {
-        try {
-            this.connection = DbConfig.getDbConnection();
-            if (this.connection != null) {
-                System.out.println("Database connected successfully.");
-            } else {
-                System.out.println("Connection is null.");
-            }
-        } catch (ClassNotFoundException e) {
-            System.err.println("JDBC Driver not found.");
-            e.printStackTrace();
-        } catch (SQLException e) {
-            System.err.println("Database connection failed.");
-            e.printStackTrace();
+    /**
+     * Initializes RegisterService by establishing a database connection.
+     *
+     * @throws SQLException if a database access error occurs
+     * @throws ClassNotFoundException if JDBC driver class is not found
+     * @throws IllegalStateException if the database connection cannot be established
+     */
+    public RegisterService() throws SQLException, ClassNotFoundException {
+        this.connection = DbConfig.getDbConnection();
+        if (this.connection == null) {
+            throw new IllegalStateException("Failed to establish database connection");
         }
     }
 
+    /**
+     * Registers a new customer by inserting their details into the database.
+     * Passwords are encrypted before storage.
+     *
+     * @param customerModel the customer data to be registered
+     * @return true if registration is successful; false otherwise
+     * @throws RuntimeException if a database error or other exception occurs during registration
+     */
     public Boolean registerCustomer(CustomerModel customerModel) {
-        if (this.connection == null) {
-            System.out.println("Database did not connect");
-            return false;
-        }
-
         String insertQuery = "INSERT INTO customer (First_name, Last_name, Email_address, Phone_number, Create_password) "
                            + "VALUES (?, ?, ?, ?, ?)";
 
         try (PreparedStatement insertStmt = connection.prepareStatement(insertQuery)) {
+            // Encrypt the password using email as key or salt
+            String encryptedPassword = PasswordUtil.encrypt(customerModel.getEmail(), customerModel.getCreate());
+            
             insertStmt.setString(1, customerModel.getFirstname());
             insertStmt.setString(2, customerModel.getLastname());
             insertStmt.setString(3, customerModel.getEmail());
             insertStmt.setString(4, customerModel.getPhone());
-            insertStmt.setString(5, customerModel.getCreate());
+            insertStmt.setString(5, encryptedPassword);
 
             int rowsInserted = insertStmt.executeUpdate();
-            if (rowsInserted > 0) {
-                System.out.println("User registered successfully.");
-                return true;
-            } else {
-                System.out.println("User registration failed. No rows affected.");
-                return false;
-            }
+            return rowsInserted > 0;
         } catch (SQLException e) {
-            System.err.println("Error during customer registration: " + e.getMessage());
-            e.printStackTrace();
-            return false;
+            throw new RuntimeException("Database error during registration", e);
+        } catch (Exception e) {
+            throw new RuntimeException("Registration processing failed", e);
         }
     }
 }

@@ -1,0 +1,227 @@
+@charset "UTF-8";
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    font-family: 'Montserrat', 'Open Sans', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px 40px;
+}
+
+/* Admin Profile Section */
+.admin-profile {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px 25px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.profile-image-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #FF8C42;
+    display: block;
+}
+
+.image-upload {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background-color: #1A73E8;
+    width: 38px; /* increased size */
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s ease;
+    border: 2px solid white;
+}
+
+.image-upload:hover {
+    background-color: #155db1;
+}
+
+.image-upload i {
+    color: white;
+    font-size: 20px; /* optional: slightly larger icon */
+}
+
+.file-upload {
+    display: none;
+}
+
+.admin-info {
+    flex: 1;
+}
+
+.admin-info h1 {
+    color: #333;
+    margin: 0 0 8px 0;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+}
+
+.admin-role {
+    background-color: #FF8C42;
+    color: white;
+    padding: 6px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Profile Form Styles */
+.profile-form {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px 35px;
+}
+
+.form-title {
+    color: #333;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    font-weight: 700;
+    font-size: 24px;
+    font-family: 'Playfair Display', serif;
+}
+
+.form-row {
+    display: flex;
+    gap: 25px;
+    margin-bottom: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #1A73E8;
+    box-shadow: 0 0 8px rgba(26, 115, 232, 0.3);
+}
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn {
+    background-color: #1A73E8;
+    color: white;
+    border: none;
+    padding: 13px 30px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #155db1;
+}
+
+.btn-secondary {
+    background-color: #FF8C42;
+}
+
+.btn-secondary:hover {
+    background-color: #e67e35;
+}
+
+.error-message {
+    color: #d32f2f;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .admin-profile {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+        padding: 20px 15px;
+    }
+
+    .profile-image-container {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-image {
+        width: 120px;
+        height: 120px;
+    }
+
+    .admin-info h1 {
+        font-size: 22px;
+    }
+
+    .form-title {
+        font-size: 20px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .buttons {
+        justify-content: center;
+    }
+}

@@ -13,7 +13,7 @@ body {
 }
 
 .dashboard-container h1{
-	font-family: 'Playfair Display', serif;
+	
 	font-size: 32px;
 	gap: 20px; 
     margin-bottom: 40px;
@@ -286,3 +286,4 @@ body {
   background-color: #fff3e0;
   color: #e65100;
 }
+

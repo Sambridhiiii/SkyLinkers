@@ -19,10 +19,10 @@
 
             <!-- Logout Section -->
             <div class="logout-section">
-                <a href="logout.jsp" class="logout-btn">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                </a>
-            </div>
+			    <a href="${pageContext.request.contextPath}/LogoutController" class="logout-btn" title="Log out">
+			        <i class="fas fa-sign-out-alt"></i>LogOut
+			    </a>
+			</div>
         </div>
     </footer>
 </body>

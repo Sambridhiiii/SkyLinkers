@@ -6,9 +6,10 @@
     <title>Home Page</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <jsp:include page="header.jsp"/>
+    
     </head>
 <body >
+<jsp:include page="${headerToInclude}" />
     <section class="hero-section">
         <div class="hero-content">
             <p class="pre-title">PREMIUM TRAVEL EXPERIENCE</p>

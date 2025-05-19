@@ -1,41 +1,67 @@
 package com.Skylinker.service;
 
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.Skylinker.config.DbConfig;
+import com.Skylinker.model.CustomerModel;
+import com.Skylinker.util.PasswordUtil;
 
 /**
- * Servlet implementation class LoginService
+ * LoginService handles the authentication of customers.
+ * It manages database connections and verifies user credentials.
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/LoginService" })
-public class LoginService extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+public class LoginService {
+    private Connection dbConn;
+    private boolean isConnectionError = false;
+
     /**
-     * @see HttpServlet#HttpServlet()
+     * Initializes the LoginService and establishes a database connection.
+     * Sets a flag if the connection fails.
      */
     public LoginService() {
-        super();
-        // TODO Auto-generated constructor stub
+        try {
+            dbConn = DbConfig.getDbConnection();
+        } catch (SQLException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+            isConnectionError = true;
+        }
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+    /**
+     * Authenticates a user by checking the provided credentials against the database.
+     *
+     * @param customerModel the CustomerModel containing email and password to verify
+     * @return Boolean TRUE if authentication is successful,
+     *         FALSE if credentials do not match,
+     *         NULL if there is a connection error or SQL exception
+     */
+    public Boolean loginUser(CustomerModel customerModel) {
+        if (isConnectionError) {
+            System.out.println("Connection Error!");
+            return null;
+        }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+        // SQL query to get email and encrypted password from the database
+        String query = "SELECT Email_address, Create_password FROM customer WHERE Email_address = ?";
+        try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
+            stmt.setString(1, customerModel.getEmail());
+            ResultSet result = stmt.executeQuery();
 
+            if (result.next()) {
+                String dbEmail = result.getString("Email_address");
+                String dbPassword = result.getString("Create_password");
+                
+                // Decrypt the stored password and compare with input
+                String decryptedPassword = PasswordUtil.decrypt(dbPassword, dbEmail);
+                return decryptedPassword != null && decryptedPassword.equals(customerModel.getCreate());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+        return false;
+    }
 }

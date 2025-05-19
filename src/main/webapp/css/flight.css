@@ -4,14 +4,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+    font-family: 'Montserrat', 'Segoe UI', sans-serif;
 }
 
 body {
-	font-family: 'Playfair Display', serif;
     background-color: #f0f8ff;
     color: #333;
-  
+    line-height: 1.6;
 }
 
 .container {
@@ -20,18 +19,19 @@ body {
     padding: 20px;
 }
 
+/* Form Styles */
 .flight-form {
     background-color: white;
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
-    font-family: 'Montserrat', 'Segoe UI', sans-serif;
 }
 
 h2 {
     margin-bottom: 20px;
     color: #1a2a6c;
+    font-weight: 600;
 }
 
 .form-group {
@@ -41,9 +41,8 @@ h2 {
 label {
     display: block;
     margin-bottom: 5px;
-    font-weight: bold;
+    font-weight: 500;
     color: #444;
-    font-family: 'Montserrat', 'Segoe UI', sans-serif;
 }
 
 input, select {
@@ -52,6 +51,13 @@ input, select {
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+input:focus, select:focus {
+    border-color: #1A73E8;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
 }
 
 .form-row {
@@ -62,8 +68,10 @@ input, select {
 
 .form-row > div {
     flex: 1;
+    min-width: 0;
 }
 
+/* Button Styles */
 button {
     color: white;
     border: none;
@@ -71,11 +79,18 @@ button {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 #submitBtn {
-    background-color: #1A73E8; /* Blue */
+    background-color: #1A73E8;
 }
 
 #submitBtn:hover {
@@ -83,29 +98,22 @@ button {
 }
 
 #updateBtn {
-    background-color: #FF8C42; /* Orange */
+    background-color: #FF8C42;
 }
 
 #updateBtn:hover {
     background-color: #e6762d;
 }
 
-#deleteBtn {
-    background-color: #D32F2F; /* Red */
+
+.action-button-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
 }
 
-#deleteBtn:hover {
-    background-color: #b71c1c;
-}
-
-#resetBtn {
-    background-color: #6c757d; /* Gray */
-}
-
-#resetBtn:hover {
-    background-color: #5a6268;
-}
-
+/* Table Styles */
 .flight-table {
     width: 100%;
     border-collapse: collapse;
@@ -113,10 +121,11 @@ button {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
-    font-family: 'Arial', sans-serif;
+    margin-top: 20px;
 }
 
-.flight-table th, .flight-table td {
+.flight-table th, 
+.flight-table td {
     padding: 15px;
     text-align: left;
     border-bottom: 1px solid #eee;
@@ -125,49 +134,69 @@ button {
 .flight-table th {
     background-color: #1a2a6c;
     color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 0.5px;
 }
 
 .flight-table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
+.flight-table tr:hover {
+    background-color: #f1f5ff;
+}
+
+/* Action Buttons in Table */
 .action-buttons {
     display: flex;
-    gap: 10px;
+    gap: 8px;
+}
+
+.edit-btn, 
+.delete-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .edit-btn {
     background-color: #4CAF50;
     color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
 }
 
 .edit-btn:hover {
     background-color: #388E3C;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
 .delete-btn {
     background-color: #F44336;
     color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
 }
 
 .delete-btn:hover {
     background-color: #D32F2F;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
+/* Status Indicators */
 .status {
     display: inline-block;
-    padding: 5px 10px;
+    padding: 5px 12px;
     border-radius: 20px;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 500;
+    text-align: center;
+    min-width: 80px;
 }
 
 .status-ontime {
@@ -177,7 +206,7 @@ button {
 
 .status-delayed {
     background-color: #FFC107;
-    color: black;
+    color: #333;
 }
 
 .status-cancelled {
@@ -185,21 +214,42 @@ button {
     color: white;
 }
 
+/* Search Bar */
 .search-bar {
     margin-bottom: 20px;
+    position: relative;
 }
 
 .search-bar input {
     width: 100%;
-    padding: 12px;
+    padding: 12px 15px 12px 40px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background-repeat: no-repeat;
+    background-position: 15px center;
 }
 
-.action-button-row {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
+.search-bar input:focus {
+    border-color: #1A73E8;
+    box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .flight-table {
+        display: block;
+        overflow-x: auto;
+    }
 }

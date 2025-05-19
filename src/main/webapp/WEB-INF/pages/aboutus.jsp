@@ -5,10 +5,9 @@
   <meta charset="UTF-8">
   <title>About Us </title>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/aboutus.css"/>
-  <jsp:include page="header.jsp"/>
-  
 </head>
 <body>
+<jsp:include page="${headerToInclude}" />
   <div class="container">
     <section class="hero">
       <h1>About SkyLinker</h1>
